@@ -1,0 +1,353 @@
+aid: three-uk
+name: Three UK
+review:
+  question: Does Three UK publish a public, self-serve developer portal, downloadable
+    OpenAPI definitions, or directly callable CAMARA network APIs?
+  answer: false
+  date: '2026-07-25'
+  reviewer: API Evangelist
+  homeMarket: United Kingdom
+  tier: mno-carrier
+  gated: true
+findings:
+  summary: |
+    Three UK (Hutchison 3G UK Limited) operates no public developer portal and
+    publishes no machine-readable API contracts. Every first-party developer
+    hostname probed on 2026-07-25 failed: developer.three.co.uk,
+    developers.three.co.uk, docs.three.co.uk, apis.three.co.uk,
+    sandbox.three.co.uk, opengateway.three.co.uk and
+    developers.opengateway.three.co.uk all resolve via a wildcard DNS record to
+    the same Akamai edge address (23.210.32.115) whose TLS certificate
+    (subject O=Hutchison 3G UK Limited, CN=three.co.uk) does not cover any of
+    those names, so the handshake aborts (curl exit 60, HTTP 000) — dangling
+    wildcard DNS, not a portal. api.three.co.uk resolves to a distinct address
+    (217.171.139.193) that times out on port 443 (curl exit 28). Every path
+    probe on the main site returned 404: /developer, /developers, /api,
+    /business/api, /opengateway, /openapi.json, /swagger.json, /api-docs,
+    /graphql, /.well-known/openid-configuration,
+    /.well-known/oauth-authorization-server, /.well-known/security.txt. The
+    homepage and /business page HTML contain zero occurrences of "developer" or
+    "api". robots.txt (200) and sitemap.xml (200, a 15-entry sitemap index)
+    reference no developer or API section. The Wayback Machine holds no
+    archived snapshot of developer.three.co.uk or three.co.uk/developer at all,
+    which indicates Three UK has never operated a public developer programme —
+    this is not an abandoned portal, it is the absence of one.
+
+    The CAMARA posture is nonetheless real and is the sector-defining finding
+    here. Three UK is a named participant in the CAMARA Project's own
+    governance roster (camaraproject/Governance PARTICIPANTS.MD lists
+    "Three UK | Jason Tesh"; "Hutchison" contributes four further named
+    participants), and parent CK Hutchison Holdings is catalogued in
+    camaraproject/camara-landscape under "Operation / Operators". Three is a
+    GSMA Open Gateway participant through CK Hutchison Group Telecom: on
+    23 September 2025 BT/EE, CK Hutchison Group Telecom (Three), Virgin Media
+    O2 and Vodafone Group jointly announced the UK commercial launch of the
+    CAMARA KYC Age Verification ("Age Verify") and KYC Tenure APIs, on top of a
+    SIM Swap API the UK operators already had available, with KYC Match
+    committed. This is more than a press release — commercial availability is
+    stated by GSMA and corroborated by Telefonica's Open Gateway newsroom — but
+    NONE of it is callable from anything Three UK publishes. There is no Three
+    UK API base URL, no Three UK API reference, no Three UK sandbox, and no
+    Three UK onboarding page for these APIs. Developers reach Three UK's
+    network APIs only through third parties: GSMA names JT Group (Jersey
+    Telecom) and TMT.ID as already processing hundreds of thousands of UK
+    operator network API calls monthly, and Three UK's 51% majority owner
+    Vodafone Group is a founding venture partner in Aduna, the Ericsson-led
+    network-API joint venture. Three UK itself is not an Aduna partner.
+
+    This is the split this sector study predicts, in its purest form: the
+    carrier owns the network capability and contributes to the standard, while
+    the entire developer-facing surface — documentation, credentials, sandbox,
+    SDKs, billing — is owned by aggregators and channel partners.
+  developerPortal:
+    exists: false
+    url: ''
+    confirmed: false
+    verdict: none — no first-party developer portal, self-serve or gated
+    probes:
+    - url: https://developer.three.co.uk
+      status: '000'
+      note: TLS handshake failed (curl 60); wildcard DNS to Akamai, certificate CN=three.co.uk
+        does not include this host
+    - url: https://developers.three.co.uk
+      status: '000'
+      note: TLS handshake failed (curl 60); same dangling wildcard
+    - url: https://docs.three.co.uk
+      status: '000'
+      note: TLS handshake failed (curl 60); same dangling wildcard
+    - url: https://apis.three.co.uk
+      status: '000'
+      note: TLS handshake failed (curl 60); same dangling wildcard
+    - url: https://sandbox.three.co.uk
+      status: '000'
+      note: TLS handshake failed (curl 60); same dangling wildcard
+    - url: https://opengateway.three.co.uk
+      status: '000'
+      note: TLS handshake failed (curl 60); no Open Gateway portal on the Three UK domain
+    - url: https://developers.opengateway.three.co.uk
+      status: '000'
+      note: TLS handshake failed (curl 60); Telefonica-style Open Gateway pattern not
+        used by Three UK
+    - url: https://api.three.co.uk
+      status: '000'
+      note: resolves to 217.171.139.193, connection timed out on 443 (curl 28); not
+        a public API host
+    - url: https://www.three.co.uk/developer
+      status: '404'
+    - url: https://www.three.co.uk/developers
+      status: '404'
+    - url: https://www.three.co.uk/api
+      status: '404'
+    - url: https://www.three.co.uk/business/api
+      status: '404'
+    - url: https://www.three.co.uk/opengateway
+      status: '404'
+    - url: https://www.three.co.uk/
+      status: '200'
+      note: marketing site; HTML contains no "developer" or "api" reference
+    - url: https://www.three.co.uk/business
+      status: '200'
+      note: business marketing site; HTML contains no "developer" or "api" reference
+    - url: https://www.three.co.uk/robots.txt
+      status: '200'
+      note: single Disallow (/business-search) plus sitemap pointer; no API paths
+    - url: https://www.three.co.uk/sitemap.xml
+      status: '200'
+      note: sitemap index of 15 child sitemaps, none developer- or API-related
+  openapi:
+    harvested: false
+    count: 0
+    note: |
+      No OpenAPI, Swagger, AsyncAPI, GraphQL SDL, or .proto artifact of any kind
+      is published by Three UK. /openapi.json, /swagger.json, /api-docs,
+      /spec, /redoc and /graphql all return 404 on www.three.co.uk. The
+      openapi/ directory is deliberately absent from this repo because nothing
+      real was found. The CAMARA specifications Three UK's network APIs conform
+      to are published by the CAMARA Project on GitHub
+      (github.com/camaraproject), not by Three UK, and are catalogued
+      separately from this provider.
+  camara:
+    posture: GSMA Open Gateway participant and named CAMARA contributor; APIs commercially
+      launched but reachable only through channel partners, never from a Three UK
+      surface
+    participant: true
+    participantEvidence:
+    - url: https://github.com/camaraproject/Governance/blob/main/PARTICIPANTS.MD
+      note: 'PARTICIPANTS.MD lists "Three UK | Jason Tesh"; four further participants
+        listed under "Hutchison"'
+    - url: https://github.com/camaraproject/camara-landscape/blob/main/landscape.yml
+      note: 'CK Hutchison Holdings catalogued under second_path "Operation / Operators"'
+    apis:
+    - name: SIM Swap
+      status: available
+      evidence: GSMA / Telefonica Open Gateway newsroom state the UK operators — Vodafone,
+        Virgin Media O2, BT/EE and Three — already have the SIM Swap API available
+      callableFromProvider: false
+    - name: KYC Age Verification
+      status: commercially launched 2025-09-23
+      evidence: GSMA press release names BT/EE, CK Hutchison Group Telecom (Three),
+        Virgin Media O2 and Vodafone Group launching the Age Verify API
+      callableFromProvider: false
+    - name: KYC Tenure
+      status: commercially launched 2025-09-23
+      evidence: same GSMA press release; verifies how long a number has been associated
+        with a user
+      callableFromProvider: false
+    - name: KYC Match
+      status: committed, not confirmed live
+      evidence: GSMA press release commits the UK operators to KYC Match with fuzzy
+        matching by end of 2025; no callable evidence found at review date
+      callableFromProvider: false
+    notFound:
+    - Number Verification
+    - Device Location / Location Verification
+    - Device Status / Reachability
+    - Quality on Demand
+    - Carrier Billing
+    - Anti-fraud / Scam Signal
+    - Device Swap
+    - Population Density
+    pressReleaseOnly: false
+    pressReleaseNote: |
+      Unlike operators where CAMARA appears only in a press release, Three UK's
+      Age Verify and Tenure APIs are described by GSMA as a commercial launch,
+      and Three UK contributes named individuals to CAMARA governance. What is
+      absent is not the implementation — it is the publication. Three UK
+      documents nothing, so from a developer's point of view the APIs exist
+      only inside someone else's catalogue.
+  openGateway:
+    member: true
+    via: CK Hutchison Group Telecom
+    portal: ''
+    note: Participation is at group level. GSMA reported 86 operator groups aligned
+      with Open Gateway as of March 2026. Three UK operates no Open Gateway portal
+      of its own; opengateway.three.co.uk and developers.opengateway.three.co.uk do
+      not resolve to a service.
+  aduna:
+    directPartner: false
+    note: Three UK is not listed among Aduna's venture or network partners. Vodafone
+      Group — 51% owner of VodafoneThree, Three UK's parent since 2025-05-31 — is a
+      founding Aduna venture partner, so the Aduna channel touches Three UK only
+      indirectly through its majority shareholder.
+  channelToDevelopers:
+    direct: false
+    partners:
+    - name: JT Group (Jersey Telecom)
+      note: named by GSMA as already working with UK operators, processing hundreds
+        of thousands of network API calls monthly
+    - name: TMT.ID
+      note: named by GSMA as already working with UK operators on network API traffic
+    - name: Vodafone Group / Aduna
+      note: indirect, via majority ownership of VodafoneThree
+    note: Three UK reaches developers ONLY through aggregators and channel partners.
+      This is the central finding for this provider.
+  tmforum:
+    conformanceConfirmed: false
+    note: No TM Forum Open API conformance certification could be confirmed for Three
+      UK or Hutchison 3G UK Limited. The TM Forum certification leaderboard returned
+      HTTP 403 to anonymous fetch on 2026-07-25 and no certification report naming
+      Hutchison 3G UK was located. GSMA describes the UK Open Gateway launch as using
+      "industry-wide CAMARA and TM Forum standards", but that is a framework statement,
+      not a certification for Three UK. Recorded as unverified, not as absent.
+  threeGppExposure:
+    nef: not documented
+    scef: not documented
+    networkSlicing: not documented publicly
+    edgeMec: not documented publicly
+    note: Three UK publishes nothing about NEF/SCEF, network slicing APIs, or edge/MEC
+      exposure. CK Hutchison's Three Group Solutions markets private networks commercially
+      but exposes no API surface.
+  auth:
+    model: none published
+    schemes: []
+    ciba: false
+    cibaNote: CAMARA specifies OpenID Connect and CIBA (Client-Initiated Backchannel
+      Authentication) for network-based authorization, but no CIBA reference, OIDC
+      discovery document, or authorization endpoint appears on any Three UK surface.
+      /.well-known/openid-configuration and /.well-known/oauth-authorization-server
+      both return 404 on www.three.co.uk. Authorization for Three UK's CAMARA APIs
+      is handled inside the channel partner's platform.
+  webhooks:
+    published: false
+    asyncapi: false
+    note: No event catalogue, webhook documentation, or AsyncAPI definition is published.
+  sdks:
+    firstParty: false
+    npm: none found
+    pypi: none found
+    maven: none found
+    nuget: none found
+    note: No first-party Three UK SDK packages were found. npm registry search for
+      "three-uk" returns only unrelated packages.
+  postman:
+    publicWorkspace: false
+    note: Postman public search for "Three UK" returned zero workspaces, collections,
+      APIs, or specifications.
+  graphql:
+    published: false
+    note: https://www.three.co.uk/graphql returns 404; no public GraphQL surface.
+  iot:
+    firstPartyApi: false
+    note: |
+      Three UK's own site has no IoT section (/business/iot returns 404). CK
+      Hutchison's group B2B site groupsolutions.three.com markets Internet of
+      Things and Device Management commercially (200) and links an "IoT Starter
+      Kit" at https://3ie.m2m.com/ (200) — a Cisco Jasper Control Center
+      instance branded "Three Ireland", i.e. a customer login for a different
+      Hutchison operating company, not a Three UK developer API. Recorded here
+      so it is not mistaken for a Three UK developer surface.
+  subBrands:
+    smarty:
+      url: https://smarty.co.uk/
+      status: '200'
+      note: SMARTY, Three UK's own MVNO sub-brand, likewise publishes no API. developer.smarty.co.uk
+        does not resolve to a service; smarty.co.uk/api returns 404.
+  corporateContext:
+    parent: VodafoneThree (Vodafone Group 51% / CK Hutchison Holdings 49%)
+    mergerCompleted: '2025-05-31'
+    legalEntity: Hutchison 3G UK Limited (company number 03885486, Reading, England)
+    note: Confirmed independently from the TLS certificate served by www.three.co.uk,
+      whose EV subject reads jurisdictionCountryName=GB, businessCategory=Private Organization,
+      serialNumber=03885486, C=GB, L=Reading, O=Hutchison 3G UK Limited, CN=three.co.uk.
+transports:
+- protocol: REST
+  scheme: https
+  baseURL: ''
+  documented: false
+  note: No Three UK REST API base URL is documented anywhere public. CAMARA-conformant
+    endpoints exist behind channel partners.
+- protocol: GraphQL
+  documented: false
+- protocol: gRPC
+  documented: false
+- protocol: WebSocket
+  scheme: wss
+  documented: false
+- protocol: Webhooks
+  documented: false
+sources:
+- url: https://www.three.co.uk/
+  type: Website
+  status: '200'
+  note: Consumer and business marketing site; no developer or API content.
+- url: https://www.three.co.uk/business
+  type: Website
+  status: '200'
+  note: Business marketing; connectivity propositions only, no API surface.
+- url: https://groupsolutions.three.com/
+  type: Website
+  status: '200'
+  note: CK Hutchison group B2B site (Enterprise, IoT, Private Networks, Wholesale,
+    MVNO); no developer portal or API documentation.
+- url: https://ckhiod.com/
+  type: Website
+  status: '200'
+  note: CK Hutchison Innovations Opportunities Development, the group innovation hub;
+    no developer portal, API, Open Gateway or CAMARA link in navigation.
+- url: https://github.com/camaraproject/Governance/blob/main/PARTICIPANTS.MD
+  type: Standards
+  status: '200'
+  note: 'CAMARA governance participants list includes "Three UK | Jason Tesh" and four
+    "Hutchison" participants.'
+- url: https://github.com/camaraproject/camara-landscape/blob/main/landscape.yml
+  type: Standards
+  status: '200'
+  note: CK Hutchison Holdings listed under Operation / Operators in the CAMARA landscape.
+- url: https://www.gsma.com/newsroom/press-release/uk-mobile-operators-launch-age-verification-and-anti-fraud-apis-through-gsma-open-gateway-initiative/
+  type: PressRelease
+  note: 2025-09-23 London. BT/EE, CK Hutchison Group Telecom (Three), Virgin Media
+    O2, Vodafone Group commercially launch KYC Age Verification and KYC Tenure; KYC
+    Match committed. "CKH IOD and Three are committed to delivering interoperable APIs."
+- url: https://opengateway.telefonica.com/en/news/article/launch-open-gateway-uk
+  type: PressRelease
+  note: Names Vodafone, Virgin Media O2, BT/EE and Three as the four UK operators collaborating
+    on CAMARA; SIM Swap API already available; Tenure and Age Verify to follow.
+- url: https://www.thefastmode.com/technology-solutions/44829-uk-operators-launch-network-apis-to-support-age-verification-and-combat-digital-fraud
+  type: Article
+  note: Corroborates the UK launch and names JT Group and TMT.ID as already processing
+    hundreds of thousands of UK operator network API calls monthly.
+- url: https://www.gsma.com/solutions-and-impact/gsma-open-gateway/
+  type: Standards
+  status: '403'
+  note: GSMA Open Gateway programme page blocks anonymous fetch; participation confirmed
+    from the GSMA newsroom release instead.
+- url: https://www.tmforum.org/learn/certification/certification-leaderboard/
+  type: Standards
+  status: '403'
+  note: TM Forum certification leaderboard blocks anonymous fetch; Three UK / Hutchison
+    3G UK conformance could not be confirmed or refuted.
+- url: https://smarty.co.uk/
+  type: Website
+  status: '200'
+  note: Three UK sub-brand SMARTY; no API or developer surface.
+actions:
+  openapiHarvested: 0
+  apisListed: 0
+  apisYmlUpdated: true
+  reason: |
+    apis[] is intentionally empty. Three UK documents no public API, publishes
+    no base URL, and offers no developer onboarding of any kind. Listing its
+    CAMARA network APIs here would misrepresent third-party press coverage and
+    aggregator catalogues as first-party Three UK documentation. The CAMARA and
+    Open Gateway evidence is recorded in this review and referenced from the
+    common[] block in apis.yml instead.

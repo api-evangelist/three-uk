@@ -1,0 +1,80 @@
+aid: three-uk
+url: https://raw.githubusercontent.com/api-evangelist/three-uk/refs/heads/main/apis.yml
+name: Three UK
+kind: company
+description: >-
+  Three UK (Hutchison 3G UK Limited, Reading, England) is a United Kingdom
+  mobile network operator that launched in 2003 as the country's first 3G-only
+  carrier and grew into a consumer and business mobile, 5G, and home broadband
+  provider, also operating the SMARTY sub-brand. Since 31 May 2025 Three UK has
+  been a wholly owned subsidiary of VodafoneThree, the merged Vodafone UK /
+  Three UK joint venture that is 51% Vodafone Group and 49% CK Hutchison
+  Holdings, serving roughly 27 million UK customers. In the telecom value chain
+  Three UK is a network owner and access provider, not a developer platform: it
+  sells connectivity, spectrum-backed coverage, wholesale and MVNO capacity, and
+  business connectivity, while its group-level enterprise, IoT, private-network
+  and wholesale propositions are marketed through CK Hutchison's CKH IOD and
+  Three Group Solutions. Its API posture is partner-gated and sales-led. Three
+  UK publishes no public developer portal, no self-serve signup, no downloadable
+  OpenAPI, no SDKs, and no public Postman workspace; every candidate developer
+  hostname (developer, developers, docs, apis, sandbox, opengateway) resolves
+  only to a wildcard Akamai record whose certificate does not cover it, and the
+  Wayback Machine holds no snapshot of a Three UK developer portal ever
+  existing. Three UK is nonetheless a real participant in the sector's
+  standards layer: it is named in the CAMARA Project's governance participants
+  list, its parent CK Hutchison Holdings is listed as an Operator in the CAMARA
+  landscape, and on 23 September 2025 CK Hutchison Group Telecom (Three)
+  commercially launched CAMARA KYC Age Verification and KYC Tenure network APIs
+  alongside BT/EE, Virgin Media O2, and Vodafone under GSMA Open Gateway, on top
+  of an already-available SIM Swap API, with KYC Match committed. Those APIs are
+  reachable only through channel partners and aggregators — JT Group and TMT.ID
+  are named as processing UK operator network API traffic, and Three UK's
+  majority owner Vodafone Group is a founding venture partner in Aduna — never
+  through a Three UK developer surface.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Telecommunications
+- United Kingdom
+- Mobile Network Operator
+- Network APIs
+- CAMARA
+- GSMA Open Gateway
+- 5G
+- Broadband
+- Roaming
+- SIM Swap
+- Identity Verification
+- Age Verification
+- Wholesale
+- MVNO
+- Partner Gated
+created: '2026-07-25'
+modified: '2026-07-25'
+specificationVersion: '0.19'
+apis: []
+common:
+- type: Website
+  url: https://www.three.co.uk/
+- type: BusinessWebsite
+  url: https://www.three.co.uk/business
+- type: Blog
+  url: https://www.three.co.uk/blog
+- type: Support
+  url: https://www.three.co.uk/support
+- type: GroupWebsite
+  url: https://groupsolutions.three.com/
+- type: ParentWebsite
+  url: https://ckhiod.com/
+- type: LinkedIn
+  url: https://www.linkedin.com/company/three-uk
+- type: Standards
+  url: https://github.com/camaraproject/Governance/blob/main/PARTICIPANTS.MD
+- type: Standards
+  url: https://camaraproject.org/
+- type: Standards
+  url: https://www.gsma.com/solutions-and-impact/gsma-open-gateway/
+- type: PressRelease
+  url: https://www.gsma.com/newsroom/press-release/uk-mobile-operators-launch-age-verification-and-anti-fraud-apis-through-gsma-open-gateway-initiative/
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
