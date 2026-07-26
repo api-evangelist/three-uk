@@ -1,0 +1,31 @@
+{
+  "applinks": {
+      "details": [
+           {
+             "appIDs": [ "NCGBN7V3E6.com.hutchison3g.three", "QUGEJC8C4X.com.hutchison3g.three" ],
+             "components": [
+               {
+                  "/": "/account/*",
+                  "comment": "Matches any URL with a path that starts with /account/."
+               },
+               {
+                  "/": "/business/account/*",
+                  "comment": "Matches any URL with a path that starts with /business/account/."
+               },
+               {
+                  "/": "/shop/make-a-payment/*",
+                  "comment": "Matches any URL with a path that starts with /shop/make-a-payment/."
+               },
+               {
+                  "/": "/business/shop/make-a-payment/*",
+                  "comment": "Matches any URL with a path that starts with /business/shop/make-a-payment/."
+               },
+               {
+                  "/": "/app/*",
+                  "comment": "Matches any URL with a path that starts with /app/."
+               }
+             ]
+           }
+       ]
+   }
+}

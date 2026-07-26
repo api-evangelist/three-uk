@@ -1,0 +1,113 @@
+generated: '2026-07-25'
+method: searched
+source: live probes of every Three UK / CK Hutchison host on 2026-07-25
+note: >-
+  Three UK exposes no API-discovery documents at /.well-known/. Every RFC-defined
+  discovery path probed (security.txt RFC 9116, openid-configuration, RFC 8414
+  oauth-authorization-server, oauth-protected-resource, RFC 9727 api-catalog,
+  ai-plugin.json) returns 404 on www.three.co.uk and on every sibling host. The
+  only two documents Three UK actually serves under /.well-known/ are the mobile
+  app-association files for its My3 iOS and Android apps — real, but consumer-app
+  deep-link plumbing, not a developer surface. Recorded because the absence is
+  the finding for this provider: there is no anonymous discovery path into any
+  Three UK API, including the CAMARA network APIs it commercially launched
+  through GSMA Open Gateway, which are reachable only inside a channel partner's
+  platform.
+hosts:
+- host: https://www.three.co.uk
+  documents:
+  - path: /.well-known/apple-app-site-association
+    status: 200
+    file: three-uk-apple-app-site-association.json
+    note: >-
+      Apple universal-links manifest for the My3 iOS app (appIDs
+      NCGBN7V3E6.com.hutchison3g.three, QUGEJC8C4X.com.hutchison3g.three).
+      Confirms Hutchison 3G UK as the publisher; not an API contract.
+  - path: /.well-known/assetlinks.json
+    status: 200
+    file: three-uk-assetlinks.json
+    note: >-
+      Android Digital Asset Links for the My3 Android app
+      (com.hutchison3g.*). Not an API contract.
+  - path: /.well-known/security.txt
+    status: 404
+    spec: RFC 9116
+  - path: /.well-known/openid-configuration
+    status: 404
+    spec: OpenID Connect Discovery 1.0
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    spec: RFC 8414
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    spec: RFC 9728
+  - path: /.well-known/api-catalog
+    status: 404
+    spec: RFC 9727
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/change-password
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /swagger.json
+    status: 404
+- host: https://three.co.uk
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://groupsolutions.three.com
+  note: CK Hutchison group B2B site (Enterprise, IoT, Wholesale, MVNO, Private Networks)
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /graphql
+    status: 404
+- host: https://smarty.co.uk
+  note: SMARTY, Three UK's own MVNO sub-brand
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /openapi.json
+    status: 404
+- host: https://ckhiod.com
+  note: CKH Innovations Opportunities Development, the group innovation hub
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: https://api.three.co.uk
+  documents:
+  - path: /
+    status: 0
+    note: connection times out on 443; not a public API host
+  - path: /openapi.json
+    status: 0
+    note: connection times out on 443
+security_txt: false
+openid_configuration: false
+oauth_authorization_server: false
+api_catalog: false

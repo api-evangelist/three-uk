@@ -1,0 +1,77 @@
+generated: '2026-07-25'
+method: searched
+source: >-
+  live crawl of www.three.co.uk (sitemap index + 855 sitemap URLs) and its
+  network/support sections on 2026-07-25
+summary: >-
+  Three UK runs a network-service lifecycle, not an API lifecycle. It publishes a
+  real, dated service-status surface (an "affected areas" page plus a coverage /
+  network-status checker) and it has executed a real, dated technology sunset —
+  the 3G switch-off, now complete, announced against the UK Government's
+  2021 commitment that all public 2G and 3G networks close by 2033 at the latest.
+  What it does not publish is any API versioning scheme, API deprecation policy,
+  Sunset/Deprecation header support, developer SLA, or API changelog, because it
+  publishes no API. Everything below is the operator's service lifecycle; nothing
+  below is an API contract.
+api_lifecycle:
+  versioning: none published
+  deprecation_policy: none published
+  sunset_header: false
+  sunset_header_note: >-
+    RFC 8594 Sunset/Deprecation headers cannot be observed because no Three UK
+    API endpoint is published. No `Deprecation` pointer is emitted in apis.yml:
+    the 3G sunset below is a network-service retirement, not an API deprecation
+    policy, and claiming it as one would misrepresent the provider.
+  changelog: none published
+  sla: >-
+    No developer or API SLA is published. Consumer service commitments are
+    carried by the Ofcom Code of Practice and the Customer Complaints Code, not
+    by a developer agreement.
+status_page: https://www.three.co.uk/support/network-and-coverage/affected-areas
+status_page_note: >-
+  "Affected areas" is Three UK's live service-status page — it maps and lists the
+  areas currently affected by network work or faults, with downloadable postcode
+  lists, and links out to "Check coverage and network status". It is the
+  operator's public status surface; there is no separate status.three.co.uk (the
+  hostname does not resolve to a service).
+status_surfaces:
+- name: Affected areas (network status)
+  url: https://www.three.co.uk/support/network-and-coverage/affected-areas
+  status: 200
+- name: Coverage and network status checker
+  url: https://www.three.co.uk/support/network-and-coverage/coverage
+  status: 200
+- name: Network support
+  url: https://www.three.co.uk/support/network-and-coverage/network-support
+  status: 200
+  note: redirects into the coverage / network-status checker
+- name: Emergency and disaster relief
+  url: https://www.three.co.uk/support/network-and-coverage/emergency-and-disaster-relief
+service_sunsets:
+- name: 3G network switch-off
+  url: https://www.three.co.uk/support/network-and-coverage/our-plans-to-switch-off-3g
+  status: complete
+  evidence: >-
+    The page states "We've now switched off our 3G" and cites the UK Government's
+    8 December 2021 announcement that all public 2G and 3G networks will be
+    switched off by 2033 at the latest, with operators encouraged to close 3G
+    earlier. Page last modified 2026-06-29.
+  affected_areas_map: https://www.three.co.uk/support/network-and-coverage/our-plans-to-switch-off-3g/3g-switch-off-map
+- name: 3G shutdown affected areas
+  url: https://www.three.co.uk/support/network-and-coverage/3g-shutdown-affected-areas
+- name: Changes to 3G (business customers)
+  url: https://www.three.co.uk/support/customer-communications/changes-to-3g-business
+corporate_lifecycle:
+- event: VodafoneThree merger completed
+  date: '2025-05-31'
+  note: >-
+    Three UK became a wholly owned subsidiary of VodafoneThree (Vodafone Group
+    51% / CK Hutchison Holdings 49%). Any future developer surface is more likely
+    to appear on the merged entity than on three.co.uk.
+  url: https://www.three.co.uk/network/vodafonethree
+regulatory:
+- name: Ofcom Code of Practice
+  url: https://www.three.co.uk/terms-conditions/code-of-practice/code-of-practice
+- name: Customer Complaints Code
+  url: https://www.three.co.uk/terms-conditions/code-of-practice/customer-complaints-code
+deprecated_operations: []

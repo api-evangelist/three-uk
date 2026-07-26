@@ -1,0 +1,62 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.hutchison3g.planet3.debug",
+            "sha256_cert_fingerprints": [
+                "BE:D0:B9:53:CD:E9:42:95:F8:C2:C8:2D:72:9E:BE:A0:9C:3A:14:38:46:5E:3C:84:31:1B:31:D0:1E:A3:56:37"
+            ]
+        }
+    },
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.hutchison3g.planet3.debug",
+            "sha256_cert_fingerprints": [
+                "7C:09:9E:23:67:C4:CF:42:BA:6B:D7:08:3A:4B:5A:A9:2E:BC:A1:00:20:69:79:BC:31:0F:EB:1E:E1:DB:4D:C4"
+            ]
+        }
+    },
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.hutchison3g.planet3",
+            "sha256_cert_fingerprints": [
+                "D0:5D:02:D6:98:FA:E1:23:73:A8:26:3F:59:64:F6:D8:5E:98:2F:59:D5:7B:03:D0:9A:FC:E5:7C:89:CC:6B:AA"
+            ]
+        }
+    },
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.hutchison3g.planet3",
+            "sha256_cert_fingerprints": [
+                "8F:95:7E:3D:AD:EF:70:2F:C2:4F:C6:6C:9F:1D:B1:B7:A9:95:C4:96:55:48:D5:C9:1E:FF:AD:A2:72:64:36:22"
+            ]
+        }
+    },
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "com.hutchison3g.planet3",
+            "sha256_cert_fingerprints": [
+                "83:02:4E:5E:78:B5:17:64:F3:C2:14:07:84:38:51:B1:83:17:34:6B:B9:17:A5:4F:5B:4D:94:1B:61:7A:2A:BB"
+            ]
+        }
+    }
+]

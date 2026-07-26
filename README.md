@@ -73,6 +73,17 @@ No TM Forum Open API conformance certification could be confirmed for Three UK o
 - GSMA Open Gateway — [https://www.gsma.com/solutions-and-impact/gsma-open-gateway/](https://www.gsma.com/solutions-and-impact/gsma-open-gateway/)
 - GSMA UK launch release (2025-09-23) — [https://www.gsma.com/newsroom/press-release/uk-mobile-operators-launch-age-verification-and-anti-fraud-apis-through-gsma-open-gateway-initiative/](https://www.gsma.com/newsroom/press-release/uk-mobile-operators-launch-age-verification-and-anti-fraud-apis-through-gsma-open-gateway-initiative/)
 
+## Artifacts
+
+The enrichment round of 2026-07-25 re-ran contract discovery against every Three UK, Three Group Solutions, CKH IOD and SMARTY host — `/openapi.json`, `/openapi.yaml`, `/swagger.json`, `/v1/openapi.json`, `/api-docs`, `/docs`, `/redoc`, `/graphql`, `/llms.txt` and the full `/.well-known/` discovery set — and confirmed the original finding: no machine-readable contract exists anywhere. What it did capture is real:
+
+- [`conformance/three-uk-conformance.yml`](conformance/three-uk-conformance.yml) — the CAMARA / GSMA Open Gateway posture, split explicitly between the **organisational** layer (where Three genuinely conforms: named participant, commercially launched SIM Swap / KYC Age Verification / KYC Tenure) and the **publication** layer (where it conforms to nothing, because it publishes nothing).
+- [`lifecycle/three-uk-lifecycle.yml`](lifecycle/three-uk-lifecycle.yml) — a network-service lifecycle, not an API one: the live "affected areas" status page, the coverage/network-status checker, and the completed 3G switch-off. No API versioning, deprecation policy, Sunset header support, developer SLA or changelog exists.
+- [`well-known/three-uk-well-known.yml`](well-known/three-uk-well-known.yml) — every `/.well-known/` path probed with its status. The only two documents Three UK serves there are the My3 iOS/Android app-association files, saved verbatim.
+- [`security/three-uk-domain-security.yml`](security/three-uk-domain-security.yml) — probed: TLS 1.3, HSTS `max-age=31536000`, a five-issuer CAA set, SPF and DMARC (`p=quarantine`), no DNSSEC. No security.txt, no vulnerability-disclosure programme, and no trust centre could be verified.
+- [`packages/three-uk-packages.yml`](packages/three-uk-packages.yml) — the eight registries searched and the empty result, plus the unverified `github.com/ThreeUK` organisation (one 2015 SEO repo, no company metadata) recorded as a candidate that is **not** claimed as first-party.
+- [`llms/three-uk-llms.txt`](llms/three-uk-llms.txt) — generated, since `https://www.three.co.uk/llms.txt` returns 404. It tells an agent plainly that there is nothing here to call and points it at the aggregators instead.
+
 ## Review
 
 See [review.yml](review.yml) for the full reviewer finding, every URL probed with its HTTP status, and the CAMARA / Open Gateway evidence trail.

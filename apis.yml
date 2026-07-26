@@ -53,6 +53,26 @@ modified: '2026-07-25'
 specificationVersion: '0.19'
 apis: []
 common:
+- type: DomainSecurity
+  url: security/three-uk-domain-security.yml
+- type: WellKnown
+  name: Well-known discovery probe index
+  url: well-known/three-uk-well-known.yml
+- type: Conformance
+  name: CAMARA / GSMA Open Gateway conformance posture
+  url: conformance/three-uk-conformance.yml
+- type: Lifecycle
+  name: Network service lifecycle
+  url: lifecycle/three-uk-lifecycle.yml
+- type: StatusPage
+  name: Network status - affected areas
+  url: https://www.three.co.uk/support/network-and-coverage/affected-areas
+- type: Packages
+  name: Client library search (no first-party SDKs)
+  url: packages/three-uk-packages.yml
+- type: LLMsTxt
+  name: llms.txt
+  url: llms/three-uk-llms.txt
 - type: Website
   url: https://www.three.co.uk/
 - type: BusinessWebsite
@@ -65,6 +85,17 @@ common:
   url: https://groupsolutions.three.com/
 - type: ParentWebsite
   url: https://ckhiod.com/
+- type: Login
+  name: My3 account
+  url: https://www.three.co.uk/account
+- type: TermsOfService
+  url: https://www.three.co.uk/terms-conditions
+- type: PrivacyPolicy
+  name: Three's privacy portal
+  url: https://www.three.co.uk/privacy-safety/about-privacy
+- type: Pricing
+  name: Latest price guides
+  url: https://www.three.co.uk/terms-conditions/price-guides/latest-price-guides
 - type: LinkedIn
   url: https://www.linkedin.com/company/three-uk
 - type: Standards

@@ -1,0 +1,146 @@
+generated: '2026-07-25'
+method: searched
+source: >-
+  CAMARA Project governance roster, CAMARA landscape, GSMA Open Gateway newsroom,
+  Telefonica Open Gateway newsroom, and live probes of every Three UK host on
+  2026-07-25
+summary: >-
+  Three UK conforms to the telecom sector's network-API standards at the
+  ORGANISATIONAL layer — it is a named CAMARA participant and a GSMA Open Gateway
+  member through CK Hutchison Group Telecom, with CAMARA KYC Age Verification and
+  KYC Tenure commercially launched on 23 September 2025 on top of an already
+  available SIM Swap API. It conforms to none of them at the PUBLICATION layer:
+  no Three UK API base URL, no OpenAPI, no OIDC/CIBA discovery document, no error
+  or pagination convention is published anywhere, so no wire-level conformance
+  claim can be verified from a Three UK surface. Every entry below distinguishes
+  "the operator implements it" from "the operator publishes it".
+standards:
+- id: camara
+  name: CAMARA Project network APIs
+  conforms: true
+  layer: organisational
+  evidence: >-
+    camaraproject/Governance PARTICIPANTS.MD lists "Three UK | Jason Tesh", with
+    four further named participants under "Hutchison"; parent CK Hutchison
+    Holdings is catalogued in camaraproject/camara-landscape under
+    "Operation / Operators".
+  url: https://github.com/camaraproject/Governance/blob/main/PARTICIPANTS.MD
+  publication_note: >-
+    CAMARA specifications are published by the CAMARA Project on GitHub, never by
+    Three UK. No Three UK-hosted CAMARA endpoint, spec, or sandbox exists.
+- id: gsma-open-gateway
+  name: GSMA Open Gateway
+  conforms: true
+  layer: organisational
+  evidence: >-
+    GSMA press release of 2025-09-23 names CK Hutchison Group Telecom (Three)
+    alongside BT/EE, Virgin Media O2 and Vodafone Group commercially launching
+    the KYC Age Verification and KYC Tenure APIs in the UK, with KYC Match
+    committed; Telefonica's Open Gateway newsroom names Three as one of the four
+    UK operators with SIM Swap already available.
+  url: https://www.gsma.com/newsroom/press-release/uk-mobile-operators-launch-age-verification-and-anti-fraud-apis-through-gsma-open-gateway-initiative/
+  publication_note: >-
+    Participation is at group level. opengateway.three.co.uk and
+    developers.opengateway.three.co.uk resolve only to a dangling wildcard whose
+    certificate does not cover them; Three UK operates no Open Gateway portal.
+- id: camara-sim-swap
+  name: CAMARA SIM Swap API
+  conforms: true
+  layer: organisational
+  status: available via channel partners
+  evidence: Telefonica Open Gateway newsroom states the four UK operators, including Three, already have SIM Swap available
+  callable_from_provider: false
+- id: camara-kyc-age-verification
+  name: CAMARA KYC Age Verification API
+  conforms: true
+  layer: organisational
+  status: commercially launched 2025-09-23
+  evidence: GSMA press release, UK commercial launch
+  callable_from_provider: false
+- id: camara-kyc-tenure
+  name: CAMARA KYC Tenure API
+  conforms: true
+  layer: organisational
+  status: commercially launched 2025-09-23
+  evidence: GSMA press release, UK commercial launch
+  callable_from_provider: false
+- id: camara-kyc-match
+  name: CAMARA KYC Match API
+  conforms: false
+  layer: organisational
+  status: committed, not confirmed live
+  evidence: GSMA press release commits the UK operators to KYC Match with fuzzy matching; no live evidence at review date
+  callable_from_provider: false
+- id: tmforum-open-api
+  name: TM Forum Open API conformance
+  conforms: unverified
+  evidence: >-
+    GSMA describes the UK Open Gateway launch as using "industry-wide CAMARA and
+    TM Forum standards", but that is a framework statement, not a certification.
+    The TM Forum certification leaderboard returns HTTP 403 to anonymous fetch
+    and no certification report naming Hutchison 3G UK Limited was located.
+    Recorded as unverified rather than absent.
+  url: https://www.tmforum.org/learn/certification/certification-leaderboard/
+- id: oauth2
+  name: OAuth 2.0
+  conforms: unverified
+  evidence: >-
+    No oauth2 security scheme is published because no OpenAPI is published.
+    /.well-known/oauth-authorization-server returns 404 on every Three UK host.
+- id: oidc
+  name: OpenID Connect
+  conforms: unverified
+  evidence: /.well-known/openid-configuration returns 404 on www.three.co.uk, groupsolutions.three.com, smarty.co.uk and ckhiod.com
+- id: oidc-ciba
+  name: OpenID Connect CIBA (Client-Initiated Backchannel Authentication)
+  conforms: unverified
+  evidence: >-
+    CAMARA specifies OIDC + CIBA for network-based authorization, and Three UK's
+    launched CAMARA APIs necessarily use it inside the partner's platform, but no
+    CIBA reference, discovery document, or authorization endpoint appears on any
+    Three UK surface. Authorization happens in the channel partner's platform.
+- id: rfc9457-problem-details
+  name: RFC 9457 Problem Details for HTTP APIs
+  conforms: false
+  evidence: no API contract or error reference is published
+- id: rfc9116-security-txt
+  name: RFC 9116 security.txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on www.three.co.uk, three.co.uk, groupsolutions.three.com and smarty.co.uk
+- id: rfc9727-api-catalog
+  name: RFC 9727 /.well-known/api-catalog
+  conforms: false
+  evidence: 404 on every host probed
+- id: rfc8594-sunset-header
+  name: RFC 8594 Sunset HTTP header
+  conforms: unverified
+  evidence: >-
+    Three UK publishes a dated service-sunset programme (3G switch-off) as web
+    pages, but has no API on which a Sunset header could be observed.
+- id: openapi
+  name: OpenAPI
+  conforms: false
+  evidence: >-
+    /openapi.json, /openapi.yaml, /swagger.json, /v1/openapi.json, /api-docs,
+    /docs and /redoc all 404 on www.three.co.uk, groupsolutions.three.com,
+    www.three.com, ckhiod.com and smarty.co.uk; api.three.co.uk times out on 443.
+- id: graphql
+  name: GraphQL
+  conforms: false
+  evidence: /graphql returns 404 on every host probed; no introspection surface exists
+- id: asyncapi
+  name: AsyncAPI
+  conforms: false
+  evidence: no event catalogue, webhook documentation, or AsyncAPI definition is published
+compliance_program_published: false
+compliance_note: >-
+  No trust centre, no named security certification (SOC 2, ISO 27001, PCI DSS),
+  and no vulnerability-disclosure policy could be verified on any Three UK host
+  on 2026-07-25 — trust.three.co.uk and security.three.co.uk fail TLS hostname
+  validation, and /security, /compliance, /responsible-disclosure and
+  /vulnerability-disclosure all 404. Three UK's published governance surface is
+  regulatory rather than security-certification shaped: an Ofcom Code of Practice
+  and a Customer Complaints Code at
+  https://www.three.co.uk/terms-conditions/code-of-practice/code-of-practice .
+  No `Compliance` pointer is emitted because no certification programme is
+  published.

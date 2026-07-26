@@ -1,0 +1,49 @@
+generated: '2026-07-25'
+method: searched
+source: registry and repository searches run 2026-07-25
+summary: >-
+  Three UK ships no client libraries. This file records the negative result with
+  its evidence so later rounds do not re-litigate it. No `SDKs` pointer is
+  emitted in apis.yml, because there is no official SDK to point at.
+packages: []
+registries_searched:
+- registry: npm
+  query: three-uk / three.co.uk / hutchison3g
+  result: no first-party package; matches are unrelated projects (e.g. @ukic/web-components, three.js ecosystem)
+- registry: pypi
+  query: three-uk
+  result: 404 — no project
+- registry: maven-central
+  query: co.uk.three / hutchison3g
+  result: no first-party artifact
+- registry: nuget
+  query: Three UK / Hutchison 3G
+  result: no first-party package
+- registry: pkg.go.dev
+  query: three.co.uk
+  result: no module
+- registry: rubygems
+  query: three-uk
+  result: no gem
+- registry: packagist
+  query: three-uk
+  result: no package
+- registry: crates.io
+  query: three-uk
+  result: no crate
+source_code:
+- host: github.com
+  candidate_org: https://github.com/ThreeUK
+  verified_first_party: false
+  note: >-
+    A GitHub organisation named "ThreeUK" exists (created 2015-01-21) but carries
+    no name, company, website, email, description, or verification, and holds a
+    single unmaintained 2015 repository ("SEO-Best-Practice", SEO advice, 0
+    stars). Nothing links it to Hutchison 3G UK Limited, and nothing in it is an
+    SDK. Recorded as an unverified candidate only — no `GitHubOrganization`
+    pointer is emitted in apis.yml on this evidence.
+note: >-
+  The client libraries a developer would actually use to call Three UK's CAMARA
+  network APIs belong to the channel partners and aggregators (JT Group, TMT.ID)
+  or to the CAMARA Project's own reference tooling — not to Three UK. Three UK
+  publishes nothing installable.
