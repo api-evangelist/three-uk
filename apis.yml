@@ -31,6 +31,17 @@ description: >-
   are named as processing UK operator network API traffic, and Three UK's
   majority owner Vodafone Group is a founding venture partner in Aduna — never
   through a Three UK developer surface.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Telecommunications
